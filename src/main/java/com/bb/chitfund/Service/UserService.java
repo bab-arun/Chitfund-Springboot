@@ -20,6 +20,9 @@ public class UserService {
 
 	@Autowired
 	public SchemeRepository schemeRepo;
+	
+	
+     
 
 	public User saveUserDetails(UserDto userDto) {
 
@@ -45,9 +48,7 @@ public class UserService {
 	}
 
 	public List<User> getAllUsers() {
-		//
-		// mailSenderService.sendEmail();
-		//
+		
 		return userRepo.findAll();
 
 	}

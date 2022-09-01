@@ -363,15 +363,18 @@ public class PaymentService {
 			long payAmount = scheme.getPayAmount();
 			int paymentId = pay.getId();
 			Date paidDate = pay.getPaidDate();
+			Date installDate=pay.getInstallmentDate();
 
 			SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
 			String dateStr = format1.format(paidDate);
+			String instalDate=format1.format(installDate);
 
 			paymentDto.setId(paymentId);
 			paymentDto.setUserId(userCode);
 			paymentDto.setSchemeId(schemeName1);
 			paymentDto.setSchemeAmount(schemeAmount);
 			paymentDto.setInstallmentAmount(payAmount);
+			paymentDto.setInstalDate(instalDate);
 			paymentDto.setPaidAmountDate(dateStr);
 			paymentDto.setStatus(pay.getStatus());
 

@@ -8,6 +8,14 @@ import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 public class PaymentDto implements Serializable {
 
+	public String getInstalDate() {
+		return instalDate;
+	}
+
+	public void setInstalDate(String instalDate) {
+		this.instalDate = instalDate;
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	private int id;
@@ -19,6 +27,7 @@ public class PaymentDto implements Serializable {
 	private String nextInstallmentDate;
 	private Date paidDate;
 	private String paidAmountDate;
+	private String instalDate;
 	private String paymentType;
 	private String status;
 	private String paidDatepay;
@@ -135,7 +144,7 @@ public class PaymentDto implements Serializable {
 	}
 
 	public PaymentDto(int id, String userId, String userName, String schemeId, long schemeAmount,
-			long installmentAmount, String nextInstallmentDate, Date paidDate, String paidAmountDate,
+			long installmentAmount, String nextInstallmentDate, Date paidDate, String paidAmountDate, String instalDate,
 			String paymentType, String status, String paidDatepay, Date installmentDate) {
 		super();
 		this.id = id;
@@ -147,10 +156,13 @@ public class PaymentDto implements Serializable {
 		this.nextInstallmentDate = nextInstallmentDate;
 		this.paidDate = paidDate;
 		this.paidAmountDate = paidAmountDate;
+		this.instalDate = instalDate;
 		this.paymentType = paymentType;
 		this.status = status;
 		this.paidDatepay = paidDatepay;
 		this.installmentDate = installmentDate;
 	}
+
+	
 
 }
