@@ -28,7 +28,7 @@ public class SchemeService {
 	@Autowired
 	public UserRepository userRepo;
 
-	public Scheme insertSchemeDetails(SchemeDto schemeDto) {
+	public String insertSchemeDetails(SchemeDto schemeDto) {
 
 		Scheme scheme = new Scheme(); // object creation for schemeEntity
 
@@ -37,7 +37,7 @@ public class SchemeService {
 			if (optional.isPresent()) {
 				scheme = optional.get();
 			} else {
-				throw new RuntimeException(" Invalid ID :: " + schemeDto.getId());
+				return "Invalid ID";
 			}
 		}
 
@@ -50,7 +50,8 @@ public class SchemeService {
 		scheme.setStartDate(schemeDto.getStartDate());
 		scheme.setEndDate(schemeDto.getEndDate());
 
-		return schemeRepo.save(scheme);
+		schemeRepo.save(scheme);
+		return "Scheme Saved Successfully";
 	}
 
 	public List<UserSchemeCountDto> getAllSchemes() {
@@ -93,19 +94,18 @@ public class SchemeService {
 
 
 	public long getSchemeAmount(String schemeName) {
-		long schemeAmount = schemeRepo.findInstallmentAmount(schemeName);
-		return schemeAmount;
-	}
+		return schemeRepo.findInstallmentAmount(schemeName);
+			}
 
 	public List<String> getSchemeNameList() {
-		List<String> schemeList = schemeRepo.findSchemeName();
-		return schemeList;
+		return schemeRepo.findSchemeName();
+		
 	}
 
 	public List<Scheme> getschemeProgress() {
 
-		List<Scheme> schemeProgressList = schemeRepo.findAll();
-		return schemeProgressList;
+		return schemeRepo.findAll();
+		
 	}
 
 	public List<SchemeDto> getUserSchemeList(String userCode) {

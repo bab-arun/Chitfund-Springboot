@@ -24,7 +24,7 @@ public class UserService {
 	
      
 
-	public User saveUserDetails(UserDto userDto) {
+	public String saveUserDetails(UserDto userDto) {
 
 		User user = new User(); // object creation for UserEntity
 
@@ -34,7 +34,8 @@ public class UserService {
 				user = optional.get();
 			} else {
 
-				throw new RuntimeException(" Invalid ID :: " + userDto.getId());
+				
+				return "Invalid Id";
 			}
 		}
 		user.setUserCode(userDto.getUserCode());
@@ -44,7 +45,8 @@ public class UserService {
 		user.setEmail(userDto.getEmail());
 		user.setAddress(userDto.getAddress());
 		user.setRole(userDto.getRole());
-		return userRepo.save(user); // save user details to database
+		userRepo.save(user); // save user details to database
+		return "User Details Saved";
 	}
 
 	public List<User> getAllUsers() {
@@ -59,20 +61,20 @@ public class UserService {
 		return "  Record Deleted  " + id;
 	}
 
-	public User checkUserDetails(UserDto userDto) {
+	public String checkUserDetails(UserDto userDto) {
 		User userData = null;
 		String userCode = userDto.getUserCode();
 
 		userData = userRepo.findByUserCode(userCode);
 		if (userData != null) {
 			if (userDto.getPassword().equals(userData.getPassword())) {
-				return userData;
+				return userData.getRole();
+				
 			} else {
-				throw new RuntimeException(" Invalid Password :: " + userDto.getPassword());
-
+				return "Invalid Password";
 			}
 		} else {
-			throw new RuntimeException(" Invalid UserCode :: " + userDto.getUserCode());
+			return "Invalid UserCode";
 
 		}
 
@@ -82,20 +84,19 @@ public class UserService {
 
 		Scheme scheme = schemeRepo.findBySchemeName(schemeName);
 		int schemeId = scheme.getId();
-		List<String> userCode = userRepo.getUserCode(schemeId);
-		return userCode;
-	}
+		return userRepo.getUserCode(schemeId);
+			}
 
 	public List<String> findAssignedUsers() {
-		List<String> userCode = userRepo.findAssignedusers();
-		return userCode;
+		return userRepo.findAssignedusers();
+		
 	}
 
 	public List<String> getAssignedSchemeUser(String schemeName) {
 		long schemeId = schemeRepo.findSchemeIdBySchemeName(schemeName);
 		String status = "nextInstallment";
-		List<String> userCodeList = userRepo.getAssignedSchemeUserById(schemeId, status);
-		return userCodeList;
+		return userRepo.getAssignedSchemeUserById(schemeId, status);
+		
 	}
 
 }

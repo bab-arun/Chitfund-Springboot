@@ -54,7 +54,7 @@ public class PaymentController {
 
 	@GetMapping("/acceptPayment/admin")
 	@ResponseBody
-	public String acceptPayment(@RequestParam(name = "paymentId") int paymentId) throws ParseException {
+	public String acceptPayment(@RequestParam(name = "paymentId") int paymentId)  {
 		return paymentService.acceptPayment(paymentId);
 
 	}

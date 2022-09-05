@@ -84,18 +84,7 @@ public class UserDto implements Serializable {
 		this.role = role;
 	}
 
-	public UserDto(int id, String userName, String userCode, String password, long mobile, String email, String address,
-			String role) {
-		super();
-		this.id = id;
-		this.userName = userName;
-		this.userCode = userCode;
-		this.password = password;
-		this.mobile = mobile;
-		this.email = email;
-		this.address = address;
-		this.role = role;
-	}
+	
 
 	public UserDto() {
 		super();

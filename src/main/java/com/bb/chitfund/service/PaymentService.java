@@ -47,8 +47,8 @@ public class PaymentService {
 	public String adminPayment(PaymentDto paymentDto) throws ParseException {
 		String userCode = paymentDto.getUserId();
 		String schemeName = paymentDto.getSchemeId();
-		String InstallmentDate = paymentDto.getNextInstallmentDate();
-		String cutDate = InstallmentDate.substring(0, 7);
+		String installmentDate = paymentDto.getNextInstallmentDate();
+		String cutDate = installmentDate.substring(0, 7);
 
 		User user = userRepo.findByUserCode(userCode);
 		Scheme scheme = schemeRepo.findBySchemeName(schemeName);
@@ -103,12 +103,12 @@ public class PaymentService {
 
 		} else {
 
-			throw new RuntimeException("Invalid Payment ID");
+			return "Invalid Payment ID";
 		}
 		return "User Payment is Done";
 	}
 
-	public String acceptPayment(int paymentId) throws ParseException {
+	public String acceptPayment(int paymentId)  {
 		Optional<Payment> paymentRecord = paymentRepo.findById(paymentId);
 		if (paymentRecord.isPresent()) {
 			Payment payment = paymentRecord.get();
@@ -188,21 +188,21 @@ public class PaymentService {
 			Date eDate = new SimpleDateFormat(dateformat).parse(endDate);
 
 			String schemeDuration = obj[3].toString();
-			int Duration = Integer.valueOf(schemeDuration);
+			int duration = Integer.parseInt(schemeDuration);
 
 			String numberOfUser = obj[4].toString();
-			int numOfUser = Integer.valueOf(numberOfUser);
+			int numOfUser = Integer.parseInt(numberOfUser);
 
 			String pendingPaymentCount = obj[5].toString();
-			int pendingPayCount = Integer.valueOf(pendingPaymentCount);
+			int pendingPayCount = Integer.parseInt(pendingPaymentCount);
 
 			String id = obj[6].toString();
-			int schemeId = Integer.valueOf(id);
+			int schemeId = Integer.parseInt(id);
 
 			schemePayPending.setSchemeName(schemeName);
 			schemePayPending.setStartDate(sDate);
 			schemePayPending.setEndDate(eDate);
-			schemePayPending.setSchemeDuration(Duration);
+			schemePayPending.setSchemeDuration(duration);
 			schemePayPending.setNumberOfUser(numOfUser);
 			schemePayPending.setPendingPaymentCount(pendingPayCount);
 			schemePayPending.setId(schemeId);
@@ -233,7 +233,7 @@ public class PaymentService {
 			SchemeUserPendingPaymentDto schemeUserPendingPaymentDto = new SchemeUserPendingPaymentDto();
 
 			String id = obj[0].toString();
-			int userId = Integer.valueOf(id);
+			int userId = Integer.parseInt(id);
 
 			String userCode = obj[1].toString();
 
@@ -243,7 +243,7 @@ public class PaymentService {
 			long mobile = Long.parseLong(number);
 
 			String pendingCount = obj[4].toString();
-			int pendingPaymentCount = Integer.valueOf(pendingCount);
+			int pendingPaymentCount = Integer.parseInt(pendingCount);
 
 			schemeUserPendingPaymentDto.setUserId(userId);
 			schemeUserPendingPaymentDto.setUserCode(userCode);
@@ -304,7 +304,7 @@ public class PaymentService {
 		
 		List<PaymentDto> nextInstallmentUserList = new ArrayList<>();
 
-		List<Payment> payment = new ArrayList<>();
+		List<Payment> payment = null;
 		if (schemeName1 == null || "".equals(schemeName1)) {
 			payment = paymentRepo.getlist(userId, currentDate, installment);
 		} else {
@@ -347,7 +347,7 @@ public class PaymentService {
 
 		List<PaymentDto> userPaymentList = new ArrayList<>();
 
-		List<Payment> payment = new ArrayList<>();
+		List<Payment> payment = null;
 
 		if (schemeName == null || "".equals(schemeName)) {
 			payment = paymentRepo.getPaymentHistoryList(userId, statusApproved);

@@ -86,19 +86,7 @@ public class UserSchemeCountDto {
 		this.endDate = endDate;
 	}
 
-	public UserSchemeCountDto(int id, String schemeName, long schemeAmount, long numberOfUser, long schemeUserCount,
-			long payAmount, int schemeDuration, Date startDate, Date endDate) {
-		super();
-		this.id = id;
-		this.schemeName = schemeName;
-		this.schemeAmount = schemeAmount;
-		this.numberOfUser = numberOfUser;
-		this.schemeUserCount = schemeUserCount;
-		this.payAmount = payAmount;
-		this.schemeDuration = schemeDuration;
-		this.startDate = startDate;
-		this.endDate = endDate;
-	}
+	
 
 	public UserSchemeCountDto() {
 		super();

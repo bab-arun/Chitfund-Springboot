@@ -75,17 +75,7 @@ public class SchemePendingPaymentDto {
 		this.id = id;
 	}
 
-	public SchemePendingPaymentDto(int id, String schemeName, Date startDate, Date endDate, int schemeDuration,
-			int numberOfUser, int pendingPaymentCount) {
-		super();
-		this.id = id;
-		this.schemeName = schemeName;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.schemeDuration = schemeDuration;
-		this.numberOfUser = numberOfUser;
-		this.pendingPaymentCount = pendingPaymentCount;
-	}
+	
 
 	public SchemePendingPaymentDto() {
 		super();

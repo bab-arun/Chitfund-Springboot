@@ -43,7 +43,7 @@ public class UserController {
 
 	@PostMapping("/usercode-password/check")
 	@ResponseBody
-	public User checkUserDetails(@RequestBody UserDto userDto) {
+	public String checkUserDetails(@RequestBody UserDto userDto) {
 		return userService.checkUserDetails(userDto);
 
 	}

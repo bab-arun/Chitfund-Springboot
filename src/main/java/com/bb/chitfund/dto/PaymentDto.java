@@ -143,25 +143,6 @@ public class PaymentDto implements Serializable {
 		this.paidDatepay = paidDatepay;
 	}
 
-	public PaymentDto(int id, String userId, String userName, String schemeId, long schemeAmount,
-			long installmentAmount, String nextInstallmentDate, Date paidDate, String paidAmountDate, String instalDate,
-			String paymentType, String status, String paidDatepay, Date installmentDate) {
-		super();
-		this.id = id;
-		this.userId = userId;
-		this.userName = userName;
-		this.schemeId = schemeId;
-		this.schemeAmount = schemeAmount;
-		this.installmentAmount = installmentAmount;
-		this.nextInstallmentDate = nextInstallmentDate;
-		this.paidDate = paidDate;
-		this.paidAmountDate = paidAmountDate;
-		this.instalDate = instalDate;
-		this.paymentType = paymentType;
-		this.status = status;
-		this.paidDatepay = paidDatepay;
-		this.installmentDate = installmentDate;
-	}
 
 	
 

@@ -44,12 +44,7 @@ public class AssignSchemeDto implements Serializable {
 		this.schemeId = schemeId;
 	}
 
-	public AssignSchemeDto(int id, String userId, String schemeId) {
-		super();
-		this.id = id;
-		this.userId = userId;
-		this.schemeId = schemeId;
-	}
+	
 
 	public AssignSchemeDto() {
 		super();

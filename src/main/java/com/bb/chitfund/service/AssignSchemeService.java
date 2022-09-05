@@ -1,5 +1,6 @@
 package com.bb.chitfund.service;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -37,7 +38,7 @@ public class AssignSchemeService {
 	@Value("${installmentDay}")
 	private int installmentDay;
 
-	public void saveAssignScheme(AssignUserListDto assignUserListDto) throws Exception {
+	public void saveAssignScheme(AssignUserListDto assignUserListDto) throws ParseException {
 
 		String schemeName = assignUserListDto.getSchemeName();
 		List<String> userCodeList = assignUserListDto.getUserCodeList();
@@ -72,7 +73,7 @@ public class AssignSchemeService {
 
 	}
 
-	public void nextInstallmentPaymentSetter(User user, Scheme scheme, Date nextInstallmentDate) throws Exception {
+	public void nextInstallmentPaymentSetter(User user, Scheme scheme, Date nextInstallmentDate) throws ParseException {
 
 		int schemeDuration = scheme.getSchemeDuration();
 

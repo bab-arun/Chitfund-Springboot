@@ -90,19 +90,7 @@ public class SchemeDto implements Serializable {
 		this.endDate = endDate;
 	}
 
-	public SchemeDto(int id, String schemeName, long schemeAmount, long numberOfUser, long payAmount,
-			int schemeDuration, Date startDate, Date endDate, long collectedSchemeAmount) {
-		super();
-		this.id = id;
-		this.schemeName = schemeName;
-		this.schemeAmount = schemeAmount;
-		this.numberOfUser = numberOfUser;
-		this.payAmount = payAmount;
-		this.schemeDuration = schemeDuration;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.collectedSchemeAmount = collectedSchemeAmount;
-	}
+	
 
 	public SchemeDto() {
 		super();

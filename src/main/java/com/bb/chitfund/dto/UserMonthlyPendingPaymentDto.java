@@ -30,12 +30,7 @@ public class UserMonthlyPendingPaymentDto {
 		this.paidDate = paidDate;
 	}
 
-	public UserMonthlyPendingPaymentDto(String status, String installmentDate, String paidDate) {
-		super();
-		this.status = status;
-		this.installmentDate = installmentDate;
-		this.paidDate = paidDate;
-	}
+	
 
 	public UserMonthlyPendingPaymentDto() {
 		super();

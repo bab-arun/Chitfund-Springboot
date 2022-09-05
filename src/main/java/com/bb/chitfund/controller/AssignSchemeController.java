@@ -1,5 +1,7 @@
 package com.bb.chitfund.controller;
 
+import java.text.ParseException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +23,7 @@ public class AssignSchemeController {
 
 	@PostMapping("/assignUserScheme/save")
 	@ResponseBody
-	public String assignScheme(@RequestBody AssignUserListDto assignUserListDto) throws Exception {
+	public String assignScheme(@RequestBody AssignUserListDto assignUserListDto) throws ParseException {
 
 		assignSchemeService.saveAssignScheme(assignUserListDto);
 		return "User is Assigned for scheme";

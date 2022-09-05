@@ -1,6 +1,6 @@
 package com.bb.chitfund.service;
 
-import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -38,7 +38,7 @@ public class EmailSenderService {
 	private String fromEmail="bytesandbinarieschitfund@gmail.com";
 
 	@Scheduled(cron = "${userNotificationDate}")
-	public void userSendEmail() throws MessagingException, IOException {
+	public void userSendEmail() throws MessagingException {
 
 		String status = "nextInstallment";
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -67,7 +67,7 @@ public class EmailSenderService {
 	}
 
 	@Scheduled(cron = "${adminNotificationDate}")
-	public void adminSendEmail() throws Exception {
+	public void adminSendEmail() throws  MessagingException, ParseException   {
 
 	    String closingTag="</td>";
 		List<SchemePendingPaymentDto> schemePendingPayments = paymentService.schemePendingPayment();

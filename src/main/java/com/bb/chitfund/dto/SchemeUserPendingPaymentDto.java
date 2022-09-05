@@ -52,14 +52,6 @@ public class SchemeUserPendingPaymentDto {
 		super();
 	}
 
-	public SchemeUserPendingPaymentDto(int userId, String userCode, String userName, long mobile,
-			int pendingPaymentCount) {
-		super();
-		this.userId = userId;
-		this.userCode = userCode;
-		this.userName = userName;
-		this.mobile = mobile;
-		this.pendingPaymentCount = pendingPaymentCount;
-	}
+	
 
 }
