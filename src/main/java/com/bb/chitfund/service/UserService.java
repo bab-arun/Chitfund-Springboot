@@ -99,4 +99,18 @@ public class UserService {
 		
 	}
 
+	public String checkDuplicateUserCode(String userCode) {
+		
+		Optional<User> optional = Optional.ofNullable(userRepo.findByUserCode(userCode));
+		if (optional.isPresent()) {
+			return "userCode exist";
+		}
+		else {
+			return "userCode acceptable";
+		}
+		
+		
+		
+	}
+
 }

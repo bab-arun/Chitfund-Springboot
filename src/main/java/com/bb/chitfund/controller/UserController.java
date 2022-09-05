@@ -68,4 +68,10 @@ public class UserController {
 		return userService.getAssignedSchemeUser(schemeName);
 
 	}
+	
+	@GetMapping("/checkDupilcateUserCode")
+	@ResponseBody
+	public String checkDuplicateUserCode(@RequestParam(name = "userCode") String userCode) {
+		return userService.checkDuplicateUserCode(userCode);
+	}
 }
