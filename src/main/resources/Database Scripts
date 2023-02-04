@@ -1,0 +1,69 @@
+create scheme 'chitfund';
+---------------------------------------------
+use 'chitfund';
+---------------------------------------------
+
+
+1.create user table
+---------------------
+CREATE TABLE `chitfund`.`user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_code` VARCHAR(255) NOT NULL,
+  `user_name` VARCHAR(255) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `mobile` BIGINT NOT NULL,
+  `address` VARCHAR(255) NOT NULL,
+  `role` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id`));
+  
+------------------------------------------------
+
+2.create scheme table
+---------------------
+ CREATE TABLE `chitfund`.`scheme` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `scheme_name` VARCHAR(250) NOT NULL,
+  `scheme_amount` BIGINT NOT NULL,
+  `number_of_user` BIGINT NOT NULL,
+  `pay_amount` BIGINT NOT NULL,
+  `scheme_duration` INT NOT NULL,
+  `collected_scheme_amount` BIGINT NOT NULL,
+  `start_date` DATE NOT NULL,
+  `end_date` DATE NOT NULL,
+  PRIMARY KEY (`id`));
+  
+---------------------------------------------------
+
+3.create assign scheme table
+------------------------------
+CREATE TABLE assign_scheme(
+id INT PRIMARY KEY AUTO_INCREMENT,
+user_id INT NOT NULL,
+scheme_id INT NOT NULL,
+CONSTRAINT FK_user_id FOREIGN KEY(user_id) REFERENCES user(id),
+CONSTRAINT FK_scheme_id FOREIGN KEY(scheme_id) REFERENCES scheme(id)
+);
+
+----------------------------------------------------------------
+
+4. create payment table
+------------------------
+
+
+CREATE TABLE payment(
+id INT PRIMARY KEY AUTO_INCREMENT,
+user_id INT NOT NULL,
+scheme_id INT NOT NULL,
+installment_date DATE NOT NULL,
+paid_date DATE,
+payment_type VARCHAR(100) ,
+status VARCHAR(100) NOT NULL,
+CONSTRAINT FK_payment_user_id FOREIGN KEY(user_id) REFERENCES user(id),
+CONSTRAINT FK_payment_scheme_id FOREIGN KEY(scheme_id) REFERENCES scheme(id)
+);
+	
+-------------------------------------------------------------------	
+	
+	
+
