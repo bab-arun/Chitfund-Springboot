@@ -21,7 +21,7 @@ public interface PaymentRepository extends JpaRepository<Payment, Integer> {
 	@Query("From Payment where status=:status")
 	List<Payment> findAcceptPaymentList(String status);
 
-	@Query(value = "SELECT s.scheme_name,s.start_date,s.end_date,s.scheme_duration,s.number_of_user,Count(p.status) as pending_payment,s.id FROM chitfund.payment p,chitfund.scheme s  where s.id=p.scheme_id and p.installment_Date<=:currentDate and status=:status GROUP BY s.scheme_name ", nativeQuery = true)
+	@Query(value = "SELECT s.scheme_name,s.start_date,s.end_date,s.scheme_duration,s.number_of_user,Count(p.status) as pending_payment,s.id FROM chitfund.payment p,chitfund.scheme s  where s.id=p.scheme_id and p.installment_Date<=:currentDate and status=:status GROUP BY s.scheme_name,s.id,s.start_date,s.end_date,s.scheme_duration,s.number_of_user ", nativeQuery = true)
 	List<Object[]> schemePendingPaymentList(String status, Date currentDate);
 
 	@Query(value = "select u.id,u.user_code,u.user_name,u.mobile,count(p.status) as pending_payment_count from chitfund.payment p,chitfund.user u where p.scheme_id=:schemeId and u.id=p.user_id  and p.installment_Date<=:currentDate and p.status=:status group by p.scheme_id ,p.user_id", nativeQuery = true)
